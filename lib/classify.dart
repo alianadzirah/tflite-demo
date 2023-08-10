@@ -1,14 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'main.dart';
+import 'package:tflite/tflite.dart';
 
 class Classification extends StatefulWidget {
+  const Classification({super.key});
+
   @override
-  _ClassificationState createState() => new _ClassificationState();
+  // ignore: library_private_types_in_public_api
+  _ClassificationState createState() => _ClassificationState();
 }
 
 class _ClassificationState extends State<Classification> {
@@ -37,8 +38,8 @@ class _ClassificationState extends State<Classification> {
             if (_image != null)
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(30),
+                  const Padding(
+                    padding: EdgeInsets.all(30),
                     child: Text(
                       "Classification Result",
                       style: TextStyle(
@@ -49,7 +50,7 @@ class _ClassificationState extends State<Classification> {
                     ),
                   ),
                   Container(
-                      margin: EdgeInsets.all(10), child: Image.file(_image!)),
+                      margin: const EdgeInsets.all(10), child: Image.file(_image!)),
                   Column(
                     children: _results != null
                         ? _results.map((result) {
@@ -59,13 +60,13 @@ class _ClassificationState extends State<Classification> {
                                   width: 350,
                                   height: 70,
                                   child: DecoratedBox(
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Color(0xFFFFFFFF),
                                     ),
                                     child: Center(
                                       child: Text(
                                         "${result["label"]} -  ${(result["confidence"] * 100).toStringAsFixed(1)}%",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             letterSpacing: 3.0,
                                             fontSize: 20.0,
                                             color: Colors.black,
@@ -94,21 +95,6 @@ class _ClassificationState extends State<Classification> {
                         width: 155,
                         height: 60,
                         child: ElevatedButton(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                "Gallery",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    letterSpacing: 3.0,
-                                    fontSize: 25.0,
-                                    color: Color(0xFFFFFFFF),
-                                    fontFamily: "Inter-Regular"),
-                              ),
-                            ],
-                          ),
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
                             backgroundColor: const Color(0xFFC8A18F),
@@ -123,22 +109,12 @@ class _ClassificationState extends State<Classification> {
 
                             imageClassification(image);
                           },
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                        height: 150,
-                      ),
-                      SizedBox(
-                        width: 155,
-                        height: 60,
-                        child: ElevatedButton(
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const <Widget>[
+                            children: <Widget>[
                               Text(
-                                "Camera",
+                                "Gallery",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     letterSpacing: 3.0,
@@ -148,6 +124,16 @@ class _ClassificationState extends State<Classification> {
                               ),
                             ],
                           ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                        height: 150,
+                      ),
+                      SizedBox(
+                        width: 155,
+                        height: 60,
+                        child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
                             backgroundColor: const Color(0xFFC8A18F),
@@ -162,13 +148,28 @@ class _ClassificationState extends State<Classification> {
 
                             imageClassification(image);
                           },
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                "Camera",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    letterSpacing: 3.0,
+                                    fontSize: 25.0,
+                                    color: Color(0xFFFFFFFF),
+                                    fontFamily: "Inter-Regular"),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    margin: EdgeInsets.all(40),
-                    child: Opacity(
+                    margin: const EdgeInsets.all(40),
+                    child: const Opacity(
                       opacity: 0.6,
                       child: Center(
                         child: Text(
@@ -185,7 +186,7 @@ class _ClassificationState extends State<Classification> {
                   ),
                 ],
               ),
-            SizedBox(
+            const SizedBox(
               width: 200.0,
               height: 50.0,
             ),
